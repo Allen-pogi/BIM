@@ -32,7 +32,37 @@ export function DetailsPage(props: Props) {
         
     } 
 
- 
+    
+    const updateProject = (e: React.FormEvent) => {
+        e.preventDefault();
+        const projectForm = document.getElementById("edit-project-form") as HTMLFormElement;
+        // Gather form data and update the current project
+        const formData = new FormData(projectForm);
+        const updatedProjectData: Partial<IProject> = {
+          projectName: formData.get("project-name") as string,
+          projectDescription: formData.get("project-description") as string,
+          projectStatus: formData.get("project-status") as ProjectStatus,
+          projectCost: formData.get("project-cost") as string,
+          projectType: formData.get("project-type") as ProjectType,
+          projectAddress: formData.get("project-address") as string,
+          projectFinishDate: new Date(formData.get("finishDate") as string),
+          projectProgress: formData.get("project-progress") as string
+        };
+        try {
+          // Update the current project with the new data
+          props.projectsManager.updateProject(routeParams.id as string, updatedProjectData);
+          projectForm.reset();
+          toggleModal("edit-project-modal");
+          setEditMode(false);
+        } catch (err) {
+          // Display an error message in case of an exception
+          const errorMessage = document.getElementById("err") as HTMLElement;
+          errorMessage.textContent = err.toString();
+          toggleModal("error-popup");
+        }
+    }
+    
+    
 
 
     const [projects, setProjects] = React.useState<Project[]>(
@@ -131,11 +161,8 @@ export function DetailsPage(props: Props) {
                     <label htmlFor="finishDate">
                         <span className="material-icons-round">calendar_month</span>Finish
                         Date
-                        
                     </label>
-                    
                     <input name="finishDate" type="date" />
-                   
                     </div>
                     <div className="form-field-container">
                         
@@ -158,7 +185,7 @@ export function DetailsPage(props: Props) {
                     }}
                     >
                    
-                    <button onClick={(e) => onEditProject()}
+                    <button onClick={(e) => updateProject(e)}
                         id="submit-new-project-btn"
                         type="button"
                         style={{ backgroundColor: "rgb(18, 145, 18)" }}

@@ -9,8 +9,9 @@ export function HomePageProjectCard(props: Props) {
   return (
     <div className="dashboard-card" 
       style={{ 
-        padding: "30px 10px",
-        width: "20vw"
+        padding: "30px 0px",
+        width: "20vw",
+        backgroundColor: "#84AFDC",
 
       }}>
       <div
@@ -22,7 +23,7 @@ export function HomePageProjectCard(props: Props) {
           marginBottom: 10
         }}
       >
-        <h2>{props.project.projectName}</h2>
+        <h2 style={{ color: "#000000", fontWeight: "bold",  }}>{props.project.projectName}</h2>
       </div>
       <div style={{ padding: "0 30px" }}>
         <div
@@ -34,23 +35,29 @@ export function HomePageProjectCard(props: Props) {
         >
           <div className="card-content">
             <div className="card-property">
-              <h5 style={{ color: "#969696" }}>Status</h5>
-              <h5 id="project-status" data-project-info="status">{props.project.projectStatus}</h5>
+              <h5 style={{ color: "#535353" }}>Status</h5>
+              <h5 style={{ color: "#000000", fontWeight: "bold", }} id="project-status" data-project-info="status">{props.project.projectStatus}</h5>
             </div>
             <div className="card-property">
-              <h5 style={{ color: "#969696" }}>Type</h5>
-              <h5 id="project-type" data-project-info="type">{props.project.projectType}</h5>
+              <h5 style={{ color: "#535353" }}>Type</h5>
+              <h5 style={{ color: "#000000", fontWeight: "bold", }}id="project-type" data-project-info="type">{props.project.projectType}</h5>
             </div>
             <div className="card-property">
-              <h5 style={{ color: "#969696" }}>Address</h5>
-              <h5 id="project-address" data-project-info="address">{props.project.projectAddress}</h5>
+              <h5 style={{ color: "#535353" }}>Address</h5>
+              <h5 style={{ color: "#000000", fontWeight: "bold", }} id="project-address" data-project-info="address" >{props.project.projectAddress}</h5>
+            </div>
+            <div className="card-property">
+              <h5 style={{ color: "#535353" }}>Finish Date</h5>
+              <h5 style={{ color: "#000000", fontWeight: "bold", }} id="project-address" data-project-info="address" >{props.project.projectFinishDate.toDateString()}</h5>
             </div>
             <div
               className="card-property"
               style={{
-                backgroundColor: "#404040",
+                backgroundColor: "#84AFDC",
                 borderRadius: 9999,
-                overflow: "auto"
+                overflow: "auto",
+                outline: "100",
+                border: "1px solid black"
               }}
             >
               <div
@@ -58,9 +65,10 @@ export function HomePageProjectCard(props: Props) {
                 data-project-info="progress"
                 style={{
                   width: `${props.project.projectProgress}%`,
-                  backgroundColor: "#468f3f",
-                  padding: "4px",
-                  textAlign: "center"
+                  backgroundColor: "#3A2E37",
+                  padding: "8px",
+                  textAlign: "center",
+                  borderRadius: 9999,
                 }}
                 >
                   {props.project.projectProgress}%

@@ -3,6 +3,7 @@ import { Project, ProjectType } from "../class/projects"
 
 interface Props {
     project: Project
+    isCollapsed: boolean;
 }
 
 export function SidebarProject(props: Props) {
@@ -29,7 +30,8 @@ export function SidebarProject(props: Props) {
     return (
         <li id="nav-project-btn" className="nav-project-btn">
             <span className="material-icons-round">{iconConversion(props.project.projectType)}</span>
-            {props.project.projectName}
+           
+            {!props.isCollapsed && props.project.projectName}
         </li>
     )
 }

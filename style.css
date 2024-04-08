@@ -6,7 +6,7 @@
     --primary-200: #415A66;
     --primary-300: #468f3f;
     --primary-400: #50ef5e;
-    --background: #2e2e2e;
+    --background: #E9E8E6;
     --background-100: #525252;
     --background-200: #535353;
     --font-xs: 8px;
@@ -32,6 +32,61 @@
     background-color: var(--background);
     color: #fff;
 }
+
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    transition: width 0.3s step-start;
+}
+
+#sidebar.collapsed {
+    width: 85px; /* Adjust the width as needed */
+
+    
+}
+
+.button-for-view
+{
+    background-color: black;
+    color: white;
+    width: 85px;
+    margin-bottom: 50px;
+}
+
+.button-for-view:hover
+{
+    background-color: #84AFDC;
+    color: white;
+    
+}
+
+.page {
+    transition: width 0.3s;
+}
+
+.collapsed .details-page {
+    width: calc(100% - 60px); /* Adjust the width to match your sidebar width */
+}
+
+.collapse-icon {
+    display: absoulute;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+
+
+
+.search-box-container {
+    position: absolute;
+    bottom: 40px; /* Adjust the position as needed */
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+}
+
 
 /* General Style */
 
@@ -77,6 +132,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 1;
 }
 
 /* Sidebar Style */

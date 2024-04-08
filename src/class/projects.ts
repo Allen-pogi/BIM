@@ -24,7 +24,7 @@ export interface IProject {
   projectCost: string;
   projectType: ProjectType;
   projectAddress: string;
-  projectFinishDate: Date;
+  projectFinishDate: Date | null;
   projectProgress: string;
 }
 
@@ -42,6 +42,8 @@ export function toggleModal(id: string) {
 
 // DOM element to display team information
 const teamInfo = document.getElementById("team-info") as HTMLElement;
+
+
 
 // Function to update team information in the UI
 function updateTeamInfo(team: Team) {

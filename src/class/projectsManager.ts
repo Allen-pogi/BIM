@@ -9,7 +9,7 @@ export class ProjectsManager {
   currentProject: Project | null = null;
   teamProject: string;
   onProjectCreated = (project: Project) => {}
-  onProjectDeleted = () => {}
+  onProjectDeleted = (project:Project) => {}
   onTeamCreated = (team: Team) => {}
   onTeamDeleted = () => {}
 
@@ -27,6 +27,26 @@ export class ProjectsManager {
     return project
   }
 
+  updateProject(id: string, data: Partial<IProject>) {
+    const project = this.getProject(id);
+    if (!project) { return; }
+
+    // Update the project properties
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        project[key] = data[key];
+      }
+    }
+
+    // Find the index of the updated project
+    const index = this.projectsList.findIndex((p) => p.id === id);
+    if (index !== -1) {
+      this.projectsList[index] = project;
+    }
+}
+
+  
+
   deleteProject(id: string) {
     const project = this.getProject(id)
     if (!project) { return }
@@ -34,7 +54,7 @@ export class ProjectsManager {
       return project.id !== id
     })
     this.projectsList = remaining
-    this.onProjectDeleted()
+    this.onProjectDeleted(project)
   }
 
   // Export project and team data to a JSON file

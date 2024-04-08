@@ -2,6 +2,16 @@ import * as React from "react"
 import {
     Project
 } from "../class/projects";
+
+import {
+    IProject,
+    ProjectStatus,
+    ProjectType,
+    ITeam,
+    TeamRole,
+    toggleModal,
+   
+} from "../class/projects";
 import { ProjectsManager } from "../class/projectsManager";
 
 interface Props {
@@ -20,6 +30,10 @@ export function DetailsPageHeader(props: Props) {
         projectsManager.importFromJSON()
     }
 
+    const onNewProject = () => {
+        toggleModal("new-project-modal");
+    };
+
     return (
         <header>
             <div>
@@ -30,7 +44,11 @@ export function DetailsPageHeader(props: Props) {
                 style={{ color: "#969696" }}
             >{props.project.projectDescription}</p>
             </div>
-            <div style={{ display: "flex", flexDirection: "row", rowGap: 20 }}>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", gap: "8px" }}>
+            <button onClick={onNewProject} id="import-projects-btn">
+                <p>Create Project</p>
+                
+            </button>
             <button onClick={onExportProjects} id="export-projects-btn">
                 <p>Export</p>
             </button>

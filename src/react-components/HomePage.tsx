@@ -60,12 +60,10 @@ export function HomePage(props: Props) {
 
 return (
     <div className="homepage" style={{ width: "100vw", display: "flow", justifyContent: "center", flexDirection: "column", padding: "100px", gap: "15px", overflowY: "scroll" }}>
-          <div style={{ display: "flex", justifyContent: "center" }}> {/* Add margin bottom to separate the logo from the project list */}
-            <img id="homepage-company-logo" src="./assets/company-logo.svg" alt="Construction Company" />
-        </div>
+          
 
-        <div className="">
-        <button onClick={toggleViewMode}>{viewMode === ViewMode.Grid ? "List View" : "Grid View"}</button>
+        <div >
+        <button className="button-for-view" onClick={toggleViewMode}>{viewMode === ViewMode.Grid ? "List View" : "Grid View"}</button>
         </div>
 
         
