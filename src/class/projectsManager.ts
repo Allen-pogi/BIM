@@ -8,11 +8,13 @@ export class ProjectsManager {
   teamList: Team[] = [];
   currentProject: Project | null = null;
   teamProject: string;
+  // Events triggered when projects or teams are created or deleted
   onProjectCreated = (project: Project) => {}
   onProjectDeleted = (project:Project) => {}
   onTeamCreated = (team: Team) => {}
   onTeamDeleted = () => {}
 
+  // Function to filter projects based on a search value
   filterProjects(value: string) {
     const filteredProjects = this.projectsList.filter((project) => {
       return project.projectName
@@ -20,6 +22,7 @@ export class ProjectsManager {
     return filteredProjects
   }
 
+  // Function to retrieve a project by its ID
   getProject(id: string) {
     const project = this.projectsList.find((project) => {
       return project.id === id
@@ -27,6 +30,7 @@ export class ProjectsManager {
     return project
   }
 
+  // Function to update a project with new data
   updateProject(id: string, data: Partial<IProject>) {
     const project = this.getProject(id);
     if (!project) { return; }
@@ -46,15 +50,16 @@ export class ProjectsManager {
 }
 
   
-
+  // Function to delete a project by its ID
   deleteProject(id: string) {
     const project = this.getProject(id)
     if (!project) { return }
+    // Filter out the project to be deleted from the projects list
     const remaining = this.projectsList.filter((project) => {
       return project.id !== id
     })
     this.projectsList = remaining
-    this.onProjectDeleted(project)
+    this.onProjectDeleted(project) // Trigger the onProjectDeleted event
   }
 
   // Export project and team data to a JSON file
@@ -85,6 +90,7 @@ export class ProjectsManager {
         try {
           this.createNewTeam(team)
         } catch (err) {
+          // Show error message if team creation fails
           const errorMessage = document.getElementById("err") as HTMLElement;
           errorMessage.textContent = err;
           toggleModal("error-popup");
@@ -94,6 +100,7 @@ export class ProjectsManager {
         try {
           this.newProject(project)
         } catch (err) {
+          // Show error message if project creation fails
           const errorMessage = document.getElementById("err") as HTMLElement;
           errorMessage.textContent = err;
           toggleModal("error-popup");
@@ -127,7 +134,7 @@ export class ProjectsManager {
     this.showProjectDetails(project);
     // this.showProjectTeams(project);
 
-    this.onProjectCreated(project)
+    this.onProjectCreated(project)  // Trigger the onProjectCreated event
 
     return project;
   }
