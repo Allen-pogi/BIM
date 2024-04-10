@@ -7,7 +7,7 @@
     --primary-300: #468f3f;
     --primary-400: #50ef5e;
     --background: #E9E8E6;
-    --background-100: #525252;
+    --background-100: #000000;
     --background-200: #535353;
     --font-xs: 8px;
     --font-sm: 10px;
@@ -16,6 +16,11 @@
     --font-xl: 16px;
     --font-2xl: 18px;
     --font-3xl: 20px;
+}
+
+
+.input-field::placeholder {
+    color: darkslategray; /* Change the color to your desired color */
 }
 
 * {

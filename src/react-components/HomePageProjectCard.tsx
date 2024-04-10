@@ -50,6 +50,7 @@ export function HomePageProjectCard(props: Props) {
               <h5 style={{ color: "#535353" }}>Finish Date</h5>
               <h5 style={{ color: "#000000", fontWeight: "bold", }} id="project-address" data-project-info="address" >{props.project.projectFinishDate.toDateString()}</h5>
             </div>
+            
             <div
               className="card-property"
               style={{
@@ -57,7 +58,8 @@ export function HomePageProjectCard(props: Props) {
                 borderRadius: 9999,
                 overflow: "auto",
                 outline: "100",
-                border: "1px solid black"
+                border: "1px solid black",
+               
               }}
             >
               <div
@@ -74,6 +76,7 @@ export function HomePageProjectCard(props: Props) {
                   {props.project.projectProgress}%
                 </div>
             </div>
+                       
           </div>
         </div>
       </div>

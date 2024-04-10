@@ -86,97 +86,33 @@ export function DetailsPage(props: Props) {
                 <form id="new-project-form">
                 <h2>New Project</h2>
                 <div className="input-list">
-                    <div className="form-field-container">
-                    <label>
-                        <span className="material-icons-round">apartment</span>Name
-                    </label>
-                    <input
-                        name="project-name"
-                        type="text"
-                        placeholder={currentProject.projectName}
-                        disabled = {true}
-                    />
-                    <p
-                        style={{
-                        color: "gray",
-                        fontSize: "var(--font-sm)",
-                        marginTop: 5,
-                        fontStyle: "italic"
-                        }}
-                    >
-                        TIP: Give it a short name
-                    </p>
-                    </div>
-                    <div className="form-field-container">
-                    <label>
-                        <span className="material-icons-round">subject</span>Description
-                    </label>
-                    <textarea
-                        name="project-description"
-                        cols={30}
-                        rows={5}
-                        placeholder={currentProject.projectDescription}
-                        
-                        disabled={true}
-                    />
-                    </div>
+                    
+                
                     <div className="form-field-container">
                     <label>
                         <span className="material-icons-round">not_listed_location</span>
                         Status
                     </label>
-                    <select name="project-status">
+                    <select name="project-status" style={{color: "black"}}>
                         <option>Pending</option>
                         <option>Active</option>
                         <option>Finished</option>
+                        <option>Blocked</option>
                     </select>
+                    <p
+                                style={{
+                                    color: "white",
+                                    fontSize: "var(--font-sm)",
+                                    marginTop: 5,
+                                    fontStyle: "italic"
+                                }}
+                            >
+                                Note: You can only edit project status
+                            </p>
                     </div>
-                    <div className="form-field-container">
-                    <label>
-                        <span className="material-icons-round">euro</span>Cost
-                    </label>
-                    <input name="project-cost" type="text" placeholder={currentProject.projectCost} />
-                    </div>
-                    <div className="form-field-container">
-                    <label>
-                        <span className="material-icons-round">category</span>Type
-                    </label>
-                    <select name="project-type">
-                        <option>{currentProject.projectType}</option>
-               
-                    </select>
-                    </div>
-                    <div className="form-field-container">
-                    <label>
-                        <span className="material-icons-round">place</span>Address
-                    </label>
-                    <input
-                        name="project-address"
-                        type="text"
-                        placeholder={currentProject.projectAddress}
-                        disabled = {true}
-                    />
-                    </div>
-                    <div className="form-field-container">
-                    <label htmlFor="finishDate">
-                        <span className="material-icons-round">calendar_month</span>Finish
-                        Date
-                    </label>
-                    <input name="finishDate" type="date" />
-                    </div>
-                    <div className="form-field-container">
-                        
-                    <label>
-                        <span className="material-icons-round">published_with_changes</span>
-                        Progress
-                    </label>
-                    <input
-                        name="project-progress"
-                        type="text"
-                        placeholder={currentProject.projectProgress}
-                        disabled = {true}
-                    />
-                    </div>
+                   
+                    
+              
                     <div
                     style={{
                         display: "flex",

@@ -126,17 +126,18 @@ export function Sidebar(props: Props) {
                     <h2>New Project</h2>
                     <div className="input-list">
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">apartment</span>Name
                             </label>
-                            <input
+                            <input style={{color: "black"}}
+                            className="input-field"
                                 name="project-name"
                                 type="text"
                                 placeholder="What's the name of your project?"
                             />
                             <p
                                 style={{
-                                    color: "gray",
+                                    color: "white",
                                     fontSize: "var(--font-sm)",
                                     marginTop: 5,
                                     fontStyle: "italic"
@@ -145,40 +146,45 @@ export function Sidebar(props: Props) {
                                 TIP: Give it a short name
                             </p>
                         </div>
-                        <div className="form-field-container">
-                            <label>
+                        <div  className="form-field-container">
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">subject</span>Description
                             </label>
-                            <textarea
+                            <textarea style={{color: "black"}}
+                                className="input-field"
                                 name="project-description"
                                 cols={30}
                                 rows={5}
                                 placeholder="Project's description"
                                 defaultValue={""}
+                                
                             />
                         </div>
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">not_listed_location</span>
                                 Status
                             </label>
-                            <select name="project-status">
+                            <select style={{color: "black"}} name="project-status">
                                 <option>Pending</option>
                                 <option>Active</option>
                                 <option>Finished</option>
+                                <option>Blocked</option>
                             </select>
                         </div>
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">euro</span>Cost
                             </label>
-                            <input name="project-cost" type="text" placeholder="Project's cost" />
+                            <input 
+                                className="input-field" style={{color: "black"}} name="project-cost" type="text" placeholder="Project's cost" /
+                            >
                         </div>
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">category</span>Type
                             </label>
-                            <select name="project-type">
+                            <select name="project-type" style={{color: "black"}}>
                                 <option>Residential</option>
                                 <option>Commercial</option>
                                 <option>Institutional</option>
@@ -188,31 +194,33 @@ export function Sidebar(props: Props) {
                             </select>
                         </div>
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">place</span>Address
                             </label>
-                            <input
+                            <input style={{color: "black"}}
                                 name="project-address"
                                 type="text"
                                 placeholder="Project's address"
+                                className="input-field"
                             />
                         </div>
                         <div className="form-field-container">
-                            <label htmlFor="finishDate">
+                            <label style={{color: "grey"}} htmlFor="finishDate">
                                 <span className="material-icons-round">calendar_month</span>Finish
                                 Date
                             </label>
-                            <input name="finishDate" type="date" />
+                            <input style={{color: "black"}} name="finishDate" type="date" />
                         </div>
                         <div className="form-field-container">
-                            <label>
+                            <label style={{color: "grey"}}>
                                 <span className="material-icons-round">published_with_changes</span>
                                 Progress
                             </label>
-                            <input
+                            <input style={{color: "black"}}
                                 name="project-progress"
                                 type="text"
                                 placeholder="Project's progress from 0 to 100"
+                                className="input-field"
                             />
                         </div>
                         <div className="form-field-container">

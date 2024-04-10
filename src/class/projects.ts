@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 // Define types for project status, project type, and team role
-export type ProjectStatus = "Pending" | "Active" | "Finished";
+export type ProjectStatus = "Pending" | "Active" | "Finished" | "Blocked";
 export type ProjectType = "Residential" | "Commercial" | "Institutional" | "Mixed-use" | "Industrial" | "Heavy civil";
 export type TeamRole = "BIM Manager" | "Structural" | "MEP" | "Architect" | "Contractor";
 
@@ -63,7 +63,7 @@ export class Project implements IProject {
   // Properties to satisfy IProject
   projectName: string;
   projectDescription: string;
-  projectStatus: "Pending" | "Active" | "Finished";
+  projectStatus: "Pending" | "Active" | "Finished" | "Blocked";
   projectCost: string;
   projectType: "Residential" | "Commercial" | "Institutional" | "Mixed-use" | "Industrial" | "Heavy civil";
   projectAddress: string;
