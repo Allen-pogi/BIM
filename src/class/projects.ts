@@ -30,13 +30,16 @@ export interface IProject {
 
 // Function to toggle a modal based on its ID
 export function toggleModal(id: string) {
+  // Get the modal element by its ID
   const modal = document.getElementById(id);
+  // Check if modal exists and is an instance of HTMLDialogElement
   if (modal && modal instanceof HTMLDialogElement) {
+    // Toggle modal visibility
     if (modal.open) {
       modal.close();
     } else modal.showModal();
   } else {
-    console.warn("The provided modal wasn't found. ID: ", id);
+    console.warn("The provided modal wasn't found. ID: ", id);   // Log a warning if modal element not found
   }
 }
 
@@ -47,8 +50,9 @@ const teamInfo = document.getElementById("team-info") as HTMLElement;
 
 // Function to update team information in the UI
 function updateTeamInfo(team: Team) {
-  if (team) {
-    teamInfo.innerHTML = `
+  if (team) { // Check if team exists
+     // Update team information in the UI
+     teamInfo.innerHTML = `  
       <p>Company in charge: ${team.teamName}</p>
       <p>Company's role: ${team.teamRole}</p>
       <p>Description: ${team.teamDescription}</p>
@@ -77,7 +81,7 @@ export class Project implements IProject {
     for (const key in data) {
       this[key] = data[key];
     }
-    this.id = id;
+    this.id = id; // Assign a unique ID to the project
   }
 }
 
@@ -100,7 +104,7 @@ export class Team implements ITeam {
     for (const key in data) {
       this[key] = data[key];
     }
-    this.id = id;
+    this.id = id; // Assign a unique ID to the team
     // Set up the UI for the team
     // this.setTeamUI();
   }
