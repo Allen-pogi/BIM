@@ -1,3 +1,4 @@
+// Import necessary modules and components
 import * as React from "react"
 import * as Router from "react-router-dom"
 import {
@@ -18,21 +19,24 @@ import * as Firestore from "firebase/firestore"
 import { deleteDocument } from "../firebase";
 import { TeamsCard } from "./TeamsCard";
 
+// Define Props interface for DetailsPage component
 interface Props {
     projectsManager: ProjectsManager
 }
 
+// Define DetailsPage component
 export function DetailsPage(props: Props) {
+    // State to manage edit mode
     const [editMode, setEditMode] = React.useState<boolean>(false);
 
-
+    // Function to handle editing project details
     const onEditProject = () => {
         toggleModal("edit-project-modal");
         setEditMode(true);
         
     } 
 
-    
+    // Function to update project details
     const updateProject = (e: React.FormEvent) => {
         e.preventDefault();
         const projectForm = document.getElementById("edit-project-form") as HTMLFormElement;
@@ -63,9 +67,7 @@ export function DetailsPage(props: Props) {
         }
     }
     
-    
-
-
+    // State to manage projects and get project ID from URL parameters
     const [projects, setProjects] = React.useState<Project[]>(
         props.projectsManager.projectsList
     );
@@ -78,22 +80,25 @@ export function DetailsPage(props: Props) {
     const currentProject = props.projectsManager.getProject(routeParams.id)
     if (!currentProject) { return (<p>The project with ID {routeParams.id} wasn't found.</p>) }
 
+    // Effect to trigger when current project changes
     React.useEffect(() => {}, [currentProject]);
 
+    // JSX content for DetailsPage component
     return (
         
         <div className="page" id="project-details">
+            {/* Modal for editing project */}
             <dialog id="edit-project-modal">
                 <form id="edit-project-form">
                 <h2>New Project</h2>
                 <div className="input-list">
-                    
-                
+                    {/* Form fields */}
                     <div className="form-field-container">
                     <label>
                         <span className="material-icons-round">not_listed_location</span>
                         Status
                     </label>
+                    {/* Dropdown for project status */}
                     <select name="project-status" style={{color: "black"}}>
                         <option>Pending</option>
                         <option>Active</option>
@@ -108,12 +113,12 @@ export function DetailsPage(props: Props) {
                                     fontStyle: "italic"
                                 }}
                             >
-                                Note: You can only edit project status
+                                Note: You can only edit project status  {/* Note about editing project status */}
                             </p>
                     </div>
                    
                     
-              
+                    {/* Button to submit updated project */}
                     <div
                     style={{
                         display: "flex",
@@ -133,6 +138,7 @@ export function DetailsPage(props: Props) {
                 </div>
                 </form>
             </dialog>
+            {/* Header section */}
             <DetailsPageHeader project={currentProject}/>
             <div className="main-page-content">
                 <div style={{ display: "flex", flexDirection: "column", rowGap: 20 }}>
@@ -147,6 +153,7 @@ export function DetailsPage(props: Props) {
                         }}
                         >
                         <h4 />
+                        {/* Button to edit project */}
                         <div style={{ display: "flex", alignItems: "center", columnGap: 10 }}>
                 <button onClick={onEditProject} >
                 <p style={{ width: "100%" }}>
@@ -157,6 +164,7 @@ export function DetailsPage(props: Props) {
             </div>
                         </div>
                         <div style={{ padding: "0 30px" }}>
+                        {/* Project details */}
                         <div
                             style={{
                             display: "flex",
@@ -210,8 +218,10 @@ export function DetailsPage(props: Props) {
                         </div>
                         </div>
                     </div>
+                    {/* Component to display teams */}
                     <TeamsCard project={currentProject} projectsManager={props.projectsManager}/>
                 </div>  
+                {/* Component for viewing IFC files */}
                 <IFCViewer/>
             </div>
         </div>
