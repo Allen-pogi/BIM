@@ -13,7 +13,7 @@ import {
 import { ProjectsManager } from "../class/projectsManager";
 import { DetailsPageHeader } from "./DetailsPageHeader";
 import { IFCViewer } from "./IFCViewer";
-import { getCollection } from "../firebase";
+import { getCollection, getProject } from "../firebase";
 import * as Firestore from "firebase/firestore"
 import { deleteDocument } from "../firebase";
 import { TeamsCard } from "./TeamsCard";
@@ -39,17 +39,18 @@ export function DetailsPage(props: Props) {
         // Gather form data and update the current project
         const formData = new FormData(projectForm);
         const updatedProjectData: Partial<IProject> = {
-          projectName: formData.get("project-name") as string,
-          projectDescription: formData.get("project-description") as string,
+         
           projectStatus: formData.get("project-status") as ProjectStatus,
-          projectCost: formData.get("project-cost") as string,
-          projectType: formData.get("project-type") as ProjectType,
-          projectAddress: formData.get("project-address") as string,
-          projectFinishDate: new Date(formData.get("finishDate") as string),
-          projectProgress: formData.get("project-progress") as string
+         
         };
         try {
           // Update the current project with the new data
+
+          ///pang update sa database
+          const projectsCollection = getProject("/projects",  routeParams.id  as string)
+          Firestore.updateDoc(projectsCollection, updatedProjectData)
+
+          //pang update locally para magreflect agad
           props.projectsManager.updateProject(routeParams.id as string, updatedProjectData);
           projectForm.reset();
           toggleModal("edit-project-modal");
@@ -83,7 +84,7 @@ export function DetailsPage(props: Props) {
         
         <div className="page" id="project-details">
             <dialog id="edit-project-modal">
-                <form id="new-project-form">
+                <form id="edit-project-form">
                 <h2>New Project</h2>
                 <div className="input-list">
                     

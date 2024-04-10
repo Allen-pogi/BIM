@@ -16,6 +16,11 @@ export const firestoreDB = Firestore.getFirestore()
 export function getCollection<T>(path: string) {
   return Firestore.collection(firestoreDB, path) as Firestore.CollectionReference<T>
 }
+export function getProject(path: string , id: string) {
+  return Firestore.doc(firestoreDB, `${path}/${id}`);
+ 
+
+}
 
 export function deleteDocument(path: string, id: string) {
   const doc = Firestore.doc(firestoreDB,  `${path}/${id}`)
